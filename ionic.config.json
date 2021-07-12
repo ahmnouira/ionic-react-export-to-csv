@@ -1,0 +1,7 @@
+{
+  "name": "ionic-react-export-to-csv",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
