@@ -33,9 +33,8 @@ export function convertToCSV(array: any[]): any {
  export async function saveAsCSV(csv: any) {
 
     var fileName: any = "exported.csv"
-    File.writeFile(File.externalRootDirectory, fileName, csv, {
-        replace: true
-    })
+    
+    File.writeFile(File.dataDirectory, fileName, csv)
       .then(
       _ => {
         alert('Success ;-)' + File.dataDirectory)
@@ -44,7 +43,7 @@ export function convertToCSV(array: any[]): any {
       .catch(
       err => {
 
-           File.writeExistingFile(File.externalRootDirectory, fileName, csv)
+           File.writeExistingFile(File.dataDirectory, fileName, csv)
           .then(
           _ => {
         alert('Success ;-)' + File.dataDirectory)
