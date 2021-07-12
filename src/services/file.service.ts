@@ -1,5 +1,6 @@
 import {File} from '@ionic-native/file'
 
+
 export function convertToCSV(array: any[]): any {
     let csv: string = ''
     let line: string = ''
