@@ -9,14 +9,13 @@ import {
   IonButton,
   IonInput,
   IonGrid,
-  IonRadio,
   IonRow,
 } from '@ionic/react'
 import './Home.css'
 import { isPlatform } from '@ionic/react'
 import { jsonToCSV, readString } from 'react-papaparse'
 import { data } from '../datasource/data'
-import { readFile, resolveFile, saveAsCSV } from '../services/file.service'
+import { saveAsCSV } from '../services/file.service'
 import { openCSVFile } from '../services/fileOpener.service'
 
 type webCSVType = {
@@ -38,7 +37,6 @@ const Home: React.FC = () => {
 
   const extractData = (res: string) => {
     let csvData = res || ''
-
     readString(csvData, {
       complete: (parsedData) => {
         const p = parsedData as any
@@ -66,21 +64,13 @@ const Home: React.FC = () => {
       try {
         const saved = await saveAsCSV(blob)
         if (saved) {
-          console.log('saved::', saved.nativeURL)
-          const openfile = await openCSVFile(saved.nativeURL)
-          console.log('opned', openfile)
+          await openCSVFile(saved.nativeURL)
+      
         }
       } catch (error) {
         console.error(error)
       }
-
-      /*
-      then (res)
-      this.socialSharing.share(null, null, res.nativeURL, null).then(e =>{
-      */
     } else {
-      // Dummy implementation for Desktop download purpose
-
       setWebCSV({
         isWeb: true,
         data: URL.createObjectURL(blob),

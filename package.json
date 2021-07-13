@@ -79,5 +79,19 @@
     "@capacitor/cli": "3.1.1",
     "prettier": "^2.3.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "transformIgnorePatterns": ["/node_modules/(?!@ionic)"]
+  }
 }

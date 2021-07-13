@@ -6,11 +6,3 @@ export async function saveAsCSV(csv: Blob) {
     replace: true,
   })
 }
-
-export async function resolveFile(path: string) {
-  return await File.resolveLocalFilesystemUrl(path)
-}
-
-export async function readFile(path: string) {
-  return await File.readAsDataURL(path, 'data.csv')
-}
