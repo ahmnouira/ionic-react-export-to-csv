@@ -32,9 +32,11 @@ export function convertToCSV(array: any[]): any {
 
  export async function saveAsCSV(csv: any) {
 
-    var fileName: any = "exported.csv"
+    var fileName: any = "data.csv"
     
-    File.writeFile(File.dataDirectory, fileName, csv)
+    File.writeFile(File.dataDirectory, fileName, csv, {
+      replace: true
+    })
       .then(
       _ => {
         alert('Success ;-)' + File.dataDirectory)
