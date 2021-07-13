@@ -7,7 +7,7 @@ export async function saveAsCSV(csv: any) {
     replace: true,
   })
     .then((_) => {
-      alert('Success ;-)' + File.dataDirectory)
+      alert(File.dataDirectory)
     })
     .catch((err) => {
       File.writeExistingFile(File.dataDirectory, fileName, csv)
