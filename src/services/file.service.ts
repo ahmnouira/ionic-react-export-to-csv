@@ -1,10 +1,11 @@
 import { File } from '@ionic-native/file'
 
-export async function saveAsCSV(csv: any) {
+export async function saveAsCSV(csv: Blob) {
   var fileName: any = 'data.csv'
 
   File.writeFile(File.dataDirectory, fileName, csv, {
     replace: true,
+    
   })
     .then((_) => {
       alert(File.dataDirectory)

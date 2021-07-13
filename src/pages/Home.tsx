@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonButton, IonInput, IonGrid, IonRadio, IonRow } from '@ionic/react'
-import { TableData } from '../components/TableData'
 import './Home.css'
 import { isPlatform } from '@ionic/react'
 import { jsonToCSV, readString } from 'react-papaparse'
@@ -47,8 +46,12 @@ const Home: React.FC = () => {
       data: csvData,
     })
 
+    let blob = new Blob([csv], {
+      type: "text/csv"
+    })
+
     if (isPlatform('cordova')) {
-      const saved = await saveAsCSV(csv)
+      const saved = await saveAsCSV(blob)
       /*
       then (res)
       this.socialSharing.share(null, null, res.nativeURL, null).then(e =>{
@@ -56,9 +59,7 @@ const Home: React.FC = () => {
     } else {
       // Dummy implementation for Desktop download purpose
       
-      let blob = new Blob([csv], {
-        type: "text/csv"
-      })
+     
       setWebCSV({
         isWeb: true,
         data:   URL.createObjectURL(blob)
